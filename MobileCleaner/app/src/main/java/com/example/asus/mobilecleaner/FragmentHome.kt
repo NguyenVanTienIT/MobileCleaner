@@ -1,5 +1,8 @@
 package com.example.asus.mobilecleaner
 
+import android.app.ActivityManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -80,7 +83,11 @@ class FragmentHome : Fragment() {
 
         itemAnalyze!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                Toast.makeText(activity, "Analyze is loading", Toast.LENGTH_SHORT).show()
+                var intent : Intent = Intent(activity, ActivityDeviceAnalyze::class.java)
+
+                //intent.putExtra("use",ActivityDeviceAnalyze.FomatDouble(getUsedRamMemorySize()))
+                //intent.putExtra("free", ActivityDeviceAnalyze.FomatDouble(getFreeRamMemorySize()))
+                startActivity(intent)
             }
         })
 
@@ -106,5 +113,25 @@ class FragmentHome : Fragment() {
         })
     }
 
+
+  /*  fun getRamSize() : Double{
+        val actManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val memInfo = ActivityManager.MemoryInfo()
+        actManager.getMemoryInfo(memInfo)
+        val totalMemory = memInfo.totalMem / 1.0
+        return totalMemory / ActivityDeviceAnalyze.GB
+    }
+
+    fun getFreeRamMemorySize(): Double {
+        val mi = ActivityManager.MemoryInfo()
+        val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        activityManager.getMemoryInfo(mi)
+
+        return mi.availMem / ActivityDeviceAnalyze.GB
+    }
+
+    fun getUsedRamMemorySize() : Double{
+        return getRamSize() - getFreeRamMemorySize()
+    }*/
 
 }

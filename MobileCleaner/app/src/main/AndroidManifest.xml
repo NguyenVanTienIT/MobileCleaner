@@ -19,6 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ActivityDeviceAnalyze" />
+        <activity android:name=".ActivityContactsScan"></activity>
     </application>
 
 </manifest>
