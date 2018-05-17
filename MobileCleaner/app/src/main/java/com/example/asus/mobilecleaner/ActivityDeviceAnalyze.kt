@@ -119,8 +119,13 @@ class ActivityDeviceAnalyze : AppCompatActivity() {
 
     fun changDataStore(usedMemory : String, freeMemory : String){
         val colors = java.util.ArrayList<Int>()
-        colors.add(Color.RED)
-        colors.add(Color.GREEN)
+
+        var color1 : Int = Color.parseColor("#5CA3DE")
+        var color2 : Int = Color.parseColor("#D0E462")
+
+
+        colors.add(color1)
+        colors.add(color2)
 
         pieChart!!.setUsePercentValues(true)
         pieChart!!.description.isEnabled = false
@@ -157,8 +162,12 @@ class ActivityDeviceAnalyze : AppCompatActivity() {
     fun changDataMemory(use : String, free : String){
 
         val colors = java.util.ArrayList<Int>()
-        colors.add(Color.RED)
-        colors.add(Color.GREEN)
+        var color1 : Int = Color.parseColor("#EDA868")
+        var color2 : Int = Color.parseColor("#C0DA55")
+
+
+        colors.add(color1)
+        colors.add(color2)
 
         pieChart1!!.setUsePercentValues(true)
         pieChart1!!.description.isEnabled = false
