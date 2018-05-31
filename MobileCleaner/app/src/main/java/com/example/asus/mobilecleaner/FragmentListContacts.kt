@@ -1,7 +1,8 @@
 package com.example.asus.mobilecleaner
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,37 +10,38 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 
-class ActivityContactsScan : AppCompatActivity() {
+class FragmentListContacts : Fragment() {
 
+    var recyclerView :  RecyclerView? = null
+    var adapter : FragmentListContacts.ContactAdapter? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_contacts_scan)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+        var view : View = inflater!!.inflate(R.layout.fragment_list_contacts, container, false)
 
-        supportFragmentManager.beginTransaction().add(R.id.list_contact, FragmentListContacts()).commit()
+        recyclerView = view.findViewById(R.id.list_contacts)
 
+        recyclerView?.layoutManager = LinearLayoutManager(getActivity())
 
-//        recyclerView = findViewById(R.id.list_contacts)
-//
-//        updateUI()
+        updateUI()
+
+        return view
 
     }
 
-   /* private fun updateUI()
+
+    private fun updateUI()
     {
 
         // tạo dữ liệu giả
         var listContact :  ArrayList<Contacts> = ArrayList()
 
-       for (i in 1..6){
-           var contacts : Contacts = Contacts("abc","096893147"+i, i,"nguyenvana@gmail.com")
-           listContact.add(contacts)
-       }
-
+        for (i in 1..6){
+            var contacts : Contacts = Contacts("abc","096893147"+i, i,"nguyenvana@gmail.com")
+            listContact.add(contacts)
+        }
 
         // set Adapter cho recyclerview
-
         if(adapter == null) {
             adapter = ContactAdapter(listContact)
             recyclerView!!.adapter = adapter
@@ -50,6 +52,7 @@ class ActivityContactsScan : AppCompatActivity() {
         }
 
     }
+
 
 
     inner class ContactHolder(inflater : LayoutInflater, parent : ViewGroup) : RecyclerView.ViewHolder(inflater.inflate(R.layout.item_contacts,parent,false)),
@@ -74,8 +77,8 @@ class ActivityContactsScan : AppCompatActivity() {
         }
 
         fun bind(contacts : Contacts){
-            sdtContacts!!.setText(contacts.numberPhone)
-            countContact!!.setText(contacts.numberCount!!)
+            sdtContacts!!.setText(contacts.numberPhone.toString())
+            countContact!!.setText(contacts.numberCount!!.toString())
             imageContact!!.setImageResource(R.drawable.ic_contact)
         }
 
@@ -100,10 +103,15 @@ class ActivityContactsScan : AppCompatActivity() {
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactHolder {
-            var layoutInflater : LayoutInflater = LayoutInflater.from(applicationContext)
+            var layoutInflater : LayoutInflater = LayoutInflater.from(activity)
 
             return ContactHolder(layoutInflater, parent)
         }
 
-    }*/
+    }
+
+
+
+
+
 }

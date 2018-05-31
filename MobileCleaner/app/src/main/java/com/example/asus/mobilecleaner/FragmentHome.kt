@@ -95,6 +95,8 @@ class FragmentHome : Fragment() {
         itemScan!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 Toast.makeText(activity, "Scanning", Toast.LENGTH_SHORT).show()
+                var intent1 : Intent = Intent(activity, ActivityContactsScan::class.java)
+                startActivity(intent1)
             }
         })
 
